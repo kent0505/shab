@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shab/src/core/widgets/switch_button.dart';
 
 import '../../../core/utils.dart';
 import '../../../core/widgets/dialog_widget.dart';
@@ -74,6 +75,8 @@ class _Home extends StatefulWidget {
 class _HomeState extends State<_Home> {
   final controller = TextEditingController();
 
+  bool isActive = false;
+
   @override
   void dispose() {
     super.dispose();
@@ -118,6 +121,15 @@ class _HomeState extends State<_Home> {
                             context,
                             message: 'Snack title',
                           );
+                        },
+                      ),
+                      const SizedBox(height: 16),
+                      SwitchButton(
+                        isActive: isActive,
+                        onPressed: () {
+                          setState(() {
+                            isActive = !isActive;
+                          });
                         },
                       ),
                     ],
